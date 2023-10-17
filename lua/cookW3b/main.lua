@@ -18,6 +18,8 @@ vim.opt.termguicolors = true
 vim.opt.spelllang = 'en_us'
 vim.opt.spell = true
 
+vim.opt.scrolloff = 5;
+
 -- Autoremove trailing spaces
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*" },

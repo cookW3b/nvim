@@ -48,6 +48,9 @@ return require('packer').startup(function(use)
 		  -- Snippets
 		  {'L3MON4D3/LuaSnip'},
 		  {'rafamadriz/friendly-snippets'},
+
+      -- Icons
+      {'onsails/lspkind.nvim'}
 	  }
   }
 
@@ -98,12 +101,14 @@ return require('packer').startup(function(use)
     requires = "nvim-lua/plenary.nvim",
   }
 
+  -- Status line
+  use { "nvim-lualine/lualine.nvim" }
+
   -- Markdown
   use({
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
   })
 
-  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
-    setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+  use "lukas-reineke/indent-blankline.nvim"
 end)
