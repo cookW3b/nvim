@@ -24,12 +24,13 @@ cmp.setup({
   },
   completion = {
     completeopt = "menu,menuone",
-    border = border "CmpDocBorder"
+    -- border = border "CmpDocBorder"
   },
 
   window = {
     completion = {
       winhighlight = "Normal:CmpPmenu,Search:PmenuSel",
+      side_padding = 1,
       scrollbar = false,
       border = border "CmpDocBorder"
     },

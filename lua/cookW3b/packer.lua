@@ -14,6 +14,18 @@ return require('packer').startup(function(use)
   use { 'sainnhe/everforest' }
   use { 'sainnhe/sonokai' }
   use { "folke/tokyonight.nvim" }
+  use { "yazeed1s/oh-lucy.nvim" }
+
+  use {
+    'HiPhish/rainbow-delimiters.nvim'
+  }
+
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional
+    }
+  }
 
   -- Telescope
   use {
@@ -21,6 +33,8 @@ return require('packer').startup(function(use)
     -- or                            , branch = '0.1.x',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
+
+  use "sindrets/diffview.nvim"
 
   -- Terminal
   use {"akinsho/toggleterm.nvim", tag = '*', config = function()
@@ -67,11 +81,38 @@ return require('packer').startup(function(use)
     end
   })
 
+  use {'kevinhwang91/nvim-bqf'}
+
   -- Comments
   use 'numToStr/Comment.nvim'
 
   -- Colorizer
   use 'norcalli/nvim-colorizer.lua'
+
+  -- Paint
+  use({
+    "folke/paint.nvim",
+    config = function()
+      require("paint").setup({
+        ---@type PaintHighlight[]
+        highlights = {
+          {
+            -- filter can be a table of buffer options that should match,
+            -- or a function called with buf as param that should return true.
+            -- The example below will paint @something in comments with Constant
+            filter = { filetype = "lua" },
+            pattern = "%s*%-%-%-%s*(@%w+)",
+            hl = "Constant",
+          },
+          {
+            filter = { filetype = "python" },
+            pattern = "%s*([_%w]+:)",
+            hl = "Constant",
+          },
+        },
+      })
+    end,
+  })
 
   -- Autopairs
   use "windwp/nvim-autopairs"
@@ -79,36 +120,18 @@ return require('packer').startup(function(use)
   -- Magit
   use 'NeogitOrg/neogit'
 
-  -- Neorg
-  use {
-    "nvim-neorg/neorg",
-    config = function()
-      require('neorg').setup {
-        load = {
-          ["core.defaults"] = {},        -- Loads default behaviour
-          ["core.concealer"] = {},       -- Adds pretty icons to your documents
-          ["core.dirman"] = {            -- Manages Neorg workspaces
-            config = {
-              workspaces = {
-                notes = "~/notes",
-              },
-            },
-          },
-        },
-      }
-    end,
-    run = ":Neorg sync-parsers",
-    requires = "nvim-lua/plenary.nvim",
-  }
-
   -- Status line
-  use { "nvim-lualine/lualine.nvim" }
+  -- use { "nvim-lualine/lualine.nvim" }
+  use 'freddiehaddad/feline.nvim'
 
   -- Markdown
   use({
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
   })
+
+  -- TODO
+  use "folke/todo-comments.nvim"
 
   use "lukas-reineke/indent-blankline.nvim"
 end)

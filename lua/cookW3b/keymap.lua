@@ -14,3 +14,7 @@ vim.keymap.set('c', '<C-v>', '<C-R>+')
 vim.keymap.set('n', '<leader>fo', ':browse oldfiles<cr>') -- list of old files
 
 vim.keymap.set('n', '<leader>bd', ':bdelete<cr>') -- delete current buffer
+
+vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
+
+vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<cr>')
