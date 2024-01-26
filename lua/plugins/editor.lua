@@ -194,7 +194,12 @@ return {
   {
     'stevearc/aerial.nvim',
     opts = {
-      backends = { "treesitter", "lsp", "markdown", "man" },
+      backends = {
+          ['_']  = {"lsp", "treesitter"},
+          python = {"treesitter"},
+          rust   = {"treesitter"},
+          js = {"treesitter"}
+      },
       layout = {
         width = 40,
         min_width = 40
