@@ -174,7 +174,7 @@ return {
       vim.keymap.set("n", "<C-j>", function()
         harpoon:list():select(2)
       end)
-      vim.keymap.set("n", "<C-k>", function()
+      vim.keymap.set("n", "<C-m>", function()
         harpoon:list():select(3)
       end)
       vim.keymap.set("n", "<C-l>", function()
@@ -217,6 +217,8 @@ return {
 
   {
     "lukas-reineke/indent-blankline.nvim",
+    lazy = true,
+
     config = function()
       require("ibl").setup {
         indent = { char = "│" },
@@ -230,5 +232,27 @@ return {
     dependencies = {
       'nvim-telescope/telescope-fzf-native.nvim'
     }
+  },
+
+  {
+      'numToStr/Comment.nvim',
+      opts = {
+          -- add any options here
+      },
+      lazy = false,
+  },
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    init = function()
+      vim.keymap.set("n", "<leader>xx", ":TroubleToggle<cr>");
+      vim.keymap.set("n", "<leader>xw", ":TroubleToggle workspace_diagnostics<cr>");
+      vim.keymap.set("n", "<leader>xd", ":TroubleToggle document_diagnostics<cr>");
+    end,
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
   }
 }

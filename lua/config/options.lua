@@ -3,6 +3,7 @@ local o = vim.opt
 local w = vim.wo
 g.mapleader = " "
 
+o.cmdheight = 1
 o.autoindent = true
 o.smartindent = true
 o.expandtab = true -- space instead of tabs

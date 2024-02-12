@@ -2,13 +2,22 @@ return {
   'nvim-telescope/telescope.nvim',
   config = function ()
     require("telescope").setup({
+      defaults = {
+        mappings = {
+          n = {
+            ['<C-p>'] = require('telescope.actions.layout').toggle_preview
+          }
+        }
+      },
       pickers = {
-        -- find_files = {
-        --   theme = "dropdown"
-        -- },
-        -- live_grep = {
-        --   theme = "dropdown"
-        -- },
+        find_files = {
+          theme = "dropdown",
+          previewer = false
+        },
+        live_grep = {
+          theme = "dropdown",
+          previewer = false
+        },
         -- buffers = {
         --   theme = "dropdown"
         -- },
