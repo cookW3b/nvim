@@ -3,6 +3,7 @@ return {
   config = function()
     -- Setup language servers.
     local lspconfig = require('lspconfig')
+    local configs = require('lspconfig.configs')
 
     lspconfig.lua_ls.setup {
       settings = {
@@ -15,12 +16,29 @@ return {
       },
     }
 
+    lspconfig.pyright.setup {}
+
     lspconfig.clangd.setup {}
 
     lspconfig.jsonls.setup {}
 
+    lspconfig.vuels.setup {}
+
+    lspconfig.glsl_analyzer.setup {}
+
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+    configs.cspell = {
+      default_config = {
+        cmd = { 'cspell', '--stdio' },
+        filetypes = { 'rust' },
+        name = 'cspell',
+        root_dir = lspconfig.util.root_pattern('.git', 'Makefile', 'package.json'),
+      }
+    }
+
+    lspconfig.cspell.setup {}
 
     lspconfig.cssls.setup {
       capabilities = capabilities
@@ -95,7 +113,8 @@ return {
         -- See `:help vim.lsp.*` for documentation on any of the below functions
         local opts = { buffer = ev.buf }
         vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+        -- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+        vim.keymap.set('n', 'gd', ":Telescope lsp_definitions<cr>", opts)
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
         vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
         vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)

@@ -1,6 +1,6 @@
 return {
   'nvim-telescope/telescope.nvim',
-  config = function ()
+  config = function()
     require("telescope").setup({
       defaults = {
         mappings = {
@@ -18,9 +18,19 @@ return {
           theme = "dropdown",
           previewer = false
         },
-        -- buffers = {
-        --   theme = "dropdown"
-        -- },
+        current_buffer_fuzzy_find = {
+          theme = "dropdown"
+        },
+        buffers = {
+          previewer = false,
+          show_all_buffers = true,
+          sort_mru = true,
+          mappings = {
+            i = {
+              ["<c-d>"] = "delete_buffer",
+            },
+          },
+        },
         -- lsp_document_symbols = {
         --   theme = "dropdown"
         -- }
@@ -37,8 +47,8 @@ return {
     vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
     vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
     vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+    vim.keymap.set('n', '<leader>bb', builtin.current_buffer_fuzzy_find, {})
     vim.keymap.set('n', '<leader>ss', builtin.lsp_document_symbols)
     vim.keymap.set('n', '<leader>fp', require("telescope.builtin").resume, {})
   end
 }
-
