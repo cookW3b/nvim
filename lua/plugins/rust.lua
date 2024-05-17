@@ -20,7 +20,7 @@ return {
       },
       server = {
         on_attach = function(client, bufnr)
-          require("lsp-inlayhints").on_attach(client, bufnr)
+          -- require("lsp-inlayhints").on_attach(client, bufnr)
         end
       }
     }

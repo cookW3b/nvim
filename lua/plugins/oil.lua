@@ -2,7 +2,7 @@ return {
 	"stevearc/oil.nvim",
 	config = function()
 		local oil = require("oil")
-		vim.keymap.set("n", "<C-e>", ":Oil --float<cr>")
+		vim.keymap.set("n", "<C-e>", ":Oil<cr>")
 		vim.keymap.set("n", "<leader>i", function()
 			local entry = oil.get_cursor_entry()
 			local current_dir = oil.get_current_dir()

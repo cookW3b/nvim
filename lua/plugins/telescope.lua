@@ -7,19 +7,23 @@ return {
           n = {
             ['<C-p>'] = require('telescope.actions.layout').toggle_preview
           }
+        },
+        layout_config = {
+          width = 0.95,
+          height = 0.95
         }
       },
       pickers = {
         find_files = {
-          theme = "dropdown",
+          -- theme = "dropdown",
           previewer = false
         },
         live_grep = {
-          theme = "dropdown",
+          -- theme = "dropdown",
           previewer = false
         },
         current_buffer_fuzzy_find = {
-          theme = "dropdown"
+          -- theme = "dropdown"
         },
         buffers = {
           previewer = false,

@@ -2,7 +2,9 @@ require("config.options")
 require("config.keymaps")
 require("config.lazy")
 
-vim.cmd([[colorscheme catppuccin]])
+-- Enable filetype plugin
+vim.cmd('filetype plugin on')
+vim.cmd([[colorscheme bamboo]])
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*" },

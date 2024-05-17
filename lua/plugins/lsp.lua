@@ -16,6 +16,8 @@ return {
       },
     }
 
+    lspconfig.gopls.setup {}
+
     lspconfig.pyright.setup {}
 
     lspconfig.clangd.setup {}
@@ -25,6 +27,8 @@ return {
     lspconfig.vuels.setup {}
 
     lspconfig.glsl_analyzer.setup {}
+
+    lspconfig.wgsl_analyzer.setup {}
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.completion.completionItem.snippetSupport = true

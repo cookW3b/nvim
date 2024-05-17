@@ -28,15 +28,18 @@ vim.g.neovide_scale_factor = 1.5
 -- o.list = true
 
 -- ffdd33
--- vim.cmd [[
---   augroup line_nr
---     autocmd!
---     autocmd! ColorScheme * highlight LineNr guifg=#ebbcba
---       \ | highlight LineNrAbove guifg=#383838 gui=NONE
---       \ | highlight LineNrBelow guifg=#383838 gui=NONE
---       \ | highlight Whitespace guifg=#272727 gui=NONE
---   augroup END
--- ]]
+vim.cmd [[
+  augroup line_nr
+    autocmd!
+    autocmd! ColorScheme * highlight Whitespace guifg=#272a32
+      " \ | highlight CursorLineNr guibg=#20232a guifg=#ef596f
+  augroup END
+]]
+
+vim.cmd [[
+  autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+]]
+
 
 
 vim.cmd [[

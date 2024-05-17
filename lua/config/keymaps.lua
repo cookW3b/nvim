@@ -22,29 +22,3 @@ map.set("n", "<leader>wc", ":tabnew<cr>")
 map.set("n", "<leader>wq", ":tabclose<cr>")
 map.set("n", "<leader>wn", ":tabnext<cr>")
 map.set("n", "<leader>wp", ":tabprevious<cr>")
-
-local function spell_current_file()
-  local buf = vim.api.nvim_create_buf(false, true)
-  vim.api.nvim_command("vsplit")
-
-  local path = vim.api.nvim_buf_get_name(0)
-  local handle = io.popen("cspell " .. path)
-  local res = handle:read("*a")
-  handle:close()
-
-  vim.api.nvim_buf_set_lines(buf, 0, -1, false, vim.split(res, "\n"))
-  vim.api.nvim_buf_set_option(buf, "buftype", "nofile")
-  vim.api.nvim_buf_set_option(buf, "bufhidden", "wipe")
-  vim.api.nvim_win_set_buf(0, buf)
-end
-
-
--- local function spell_current_file()
---   local path = vim.api.nvim_buf_get_name(0)
---   local handle = io.popen("codespell " .. path)
---   local res = handle:read("*a")
---   handle:close()
---   print(res)
--- end
-
-map.set("n", "<leader>cb", spell_current_file)

@@ -16,7 +16,7 @@ return {
       styles = {
         bold = true,
         italic = false,
-        transparency = true,
+        transparency = false,
       },
 
       groups = {
@@ -54,6 +54,8 @@ return {
         -- Comment = { fg = "foam" },
         -- VertSplit = { fg = "muted", bg = "muted" },
         -- Keyword = { fg = "#5a8981", bold = true },
+        Normal = { fg = "text", bg = "#1d1e1b"},
+        Whitespace = { fg = "subtle" },
         Keyword = { fg = "#5B9E93", bold = true },
         ["@keyword.import"] = { fg = "love", bold = true },
         ["@keyword.repeat"] = { fg = "love", bold = true },
